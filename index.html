@@ -114,23 +114,23 @@
         <div class="absolute inset-0 flex items-center justify-center text-red-600 font-bold text-xl border-2 border-orange-300 rounded-[30px] opacity-50">樂</div>
     </div>
 
-    <!-- 主卡片 -->
-    <div class="max-w-md w-full bg-white rounded-3xl shadow-2xl overflow-hidden border-4 border-festival-gold relative z-20">
+    <!-- 主卡片 (寬度縮小) -->
+    <div class="w-full max-w-sm bg-white rounded-3xl shadow-2xl overflow-hidden border-4 border-festival-gold relative z-20 mx-auto"> <!-- max-w-md -> max-w-sm -->
         
         <!-- Header -->
-        <div class="bg-festival-darkRed p-6 text-center border-b-4 border-festival-gold relative">
-            <h1 class="text-3xl font-black text-festival-gold tracking-widest mb-1 flex items-center justify-center gap-3">
-                <i class="fas fa-lightbulb text-yellow-300 animate-pulse"></i>
+        <div class="bg-festival-darkRed p-5 text-center border-b-4 border-festival-gold relative"> <!-- p-6 -> p-5 -->
+            <h1 class="text-2xl font-black text-festival-gold tracking-widest mb-1 flex items-center justify-center gap-2"> <!-- text-3xl -> text-2xl -->
+                <i class="fas fa-lightbulb text-yellow-300 animate-pulse text-xl"></i>
                 元宵猜燈謎
-                <i class="fas fa-lightbulb text-yellow-300 animate-pulse"></i>
+                <i class="fas fa-lightbulb text-yellow-300 animate-pulse text-xl"></i>
             </h1>
-            <p class="text-white/80 text-sm">動動腦，好運到！</p>
+            <p class="text-white/80 text-xs">動動腦，好運到！</p> <!-- text-sm -> text-xs -->
         </div>
 
         <!-- Screen 1: Category Selection -->
-        <div id="categoryScreen" class="p-8 text-center min-h-[360px] flex flex-col justify-between">
-            <h2 class="text-xl font-bold text-gray-800 mb-4">請選擇燈謎類型</h2>
-            <div class="grid grid-cols-2 gap-3 mb-6">
+        <div id="categoryScreen" class="p-6 text-center min-h-[320px] flex flex-col justify-between"> <!-- p-8 -> p-6, min-h-[360px] -> min-h-[320px] -->
+            <h2 class="text-lg font-bold text-gray-800 mb-3">請選擇燈謎類型</h2> <!-- text-xl -> text-lg -->
+            <div class="grid grid-cols-2 gap-2 mb-4 text-sm"> <!-- gap-3 -> gap-2, text-sm added -->
                 <button onclick="selectCategory('成語篇')" class="category-btn border-2 border-festival-red text-festival-red bg-white py-2 rounded-lg font-bold">成語篇</button>
                 <button onclick="selectCategory('字謎篇')" class="category-btn border-2 border-festival-red text-festival-red bg-white py-2 rounded-lg font-bold">字謎篇</button>
                 <button onclick="selectCategory('台灣地名篇')" class="category-btn border-2 border-festival-red text-festival-red bg-white py-2 rounded-lg font-bold">台灣地名篇</button>
@@ -143,48 +143,60 @@
         </div>
 
         <!-- Screen 2: Riddle Game (Hidden by default) -->
-        <div id="gameScreen" class="hidden p-8 text-center min-h-[360px] flex flex-col justify-between relative">
+        <div id="gameScreen" class="hidden p-6 text-center min-h-[320px] flex flex-col justify-between relative"> <!-- p-8 -> p-6, min-h-[360px] -> min-h-[320px] -->
             
             <!-- 分類標籤 & 返回按鈕 -->
-            <div class="absolute top-4 left-0 w-full flex justify-between px-4 items-center">
-                <button onclick="backToMenu()" class="text-gray-400 hover:text-festival-red text-sm flex items-center">
+            <div class="absolute top-3 left-0 w-full flex justify-between px-4 items-center">
+                <button onclick="backToMenu()" class="text-gray-400 hover:text-festival-red text-xs flex items-center"> <!-- text-sm -> text-xs -->
                     <i class="fas fa-chevron-left mr-1"></i>重選
                 </button>
-                <span id="riddleCategory" class="bg-festival-yellow text-red-900 px-4 py-1 rounded-full text-sm font-bold shadow-md">
+                <span id="riddleCategory" class="bg-festival-yellow text-red-900 px-3 py-0.5 rounded-full text-xs font-bold shadow-md"> <!-- px-4 -> px-3, text-sm -> text-xs -->
                     分類載入中...
                 </span>
                 <div class="w-8"></div> <!-- Spacer for centering -->
             </div>
 
             <!-- 題目區域 -->
-            <div class="mt-8 mb-6 flex-grow flex items-center justify-center">
-                <p id="riddleQuestion" class="riddle-text text-2xl md:text-3xl font-bold text-gray-800 leading-relaxed">
+            <div class="mt-6 mb-4 flex-grow flex items-center justify-center"> <!-- mt-8 -> mt-6, mb-6 -> mb-4 -->
+                <p id="riddleQuestion" class="riddle-text text-xl md:text-2xl font-bold text-gray-800 leading-relaxed px-2"> <!-- text-2xl -> text-xl, md:text-3xl -> md:text-2xl -->
                     題目載入中...
                 </p>
             </div>
 
             <!-- 答案區域 (預設隱藏) -->
-            <div id="answerArea" class="hidden mb-6 transform transition-all duration-300">
-                <div class="bg-red-50 p-4 rounded-xl border-2 border-red-100">
-                    <p class="text-gray-500 text-sm mb-1">謎底是：</p>
-                    <p id="riddleAnswer" class="text-2xl font-bold text-festival-red"></p>
+            <div id="answerArea" class="hidden mb-4 transform transition-all duration-300"> <!-- mb-6 -> mb-4 -->
+                <div class="bg-red-50 p-3 rounded-xl border-2 border-red-100"> <!-- p-4 -> p-3 -->
+                    <p class="text-gray-500 text-xs mb-1">謎底是：</p> <!-- text-sm -> text-xs -->
+                    <p id="riddleAnswer" class="text-xl font-bold text-festival-red"></p> <!-- text-2xl -> text-xl -->
+                </div>
+            </div>
+            
+            <!-- 祝賀區域 (預設隱藏) -->
+            <div id="congratsArea" class="hidden mb-4 transform transition-all duration-300">
+                <div class="bg-yellow-50 p-4 rounded-xl border-2 border-yellow-200">
+                    <i class="fas fa-crown text-4xl text-festival-gold mb-2 block animate-bounce"></i>
+                    <p class="text-festival-darkRed font-bold text-lg mb-1">你真是太聰明了！</p>
+                    <p class="text-gray-600 text-sm">這個分類的題目已經全部答完囉。</p>
                 </div>
             </div>
 
             <!-- 按鈕區 -->
-            <div class="space-y-3">
-                <button id="showBtn" onclick="toggleAnswer()" class="w-full bg-festival-gold hover:bg-yellow-400 text-red-900 font-bold py-3 rounded-xl shadow-md transition transform hover:scale-[1.02] active:scale-95">
+            <div class="space-y-2"> <!-- space-y-3 -> space-y-2 -->
+                <button id="showBtn" onclick="toggleAnswer()" class="w-full bg-festival-gold hover:bg-yellow-400 text-red-900 font-bold py-2.5 rounded-xl shadow-md transition transform hover:scale-[1.02] active:scale-95 text-sm"> <!-- py-3 -> py-2.5, text-sm added -->
                     <i class="fas fa-lightbulb mr-2"></i>點我看解答
                 </button>
-                <button onclick="nextRiddle()" class="w-full bg-festival-red hover:bg-red-700 text-white font-bold py-3 rounded-xl shadow-md transition transform hover:scale-[1.02] active:scale-95">
+                <button id="nextBtn" onclick="nextRiddle()" class="w-full bg-festival-red hover:bg-red-700 text-white font-bold py-2.5 rounded-xl shadow-md transition transform hover:scale-[1.02] active:scale-95 text-sm"> <!-- py-3 -> py-2.5, text-sm added -->
                     <i class="fas fa-dice mr-2"></i>下一題
+                </button>
+                <button id="homeBtn" onclick="backToMenu()" class="hidden w-full bg-festival-red hover:bg-red-700 text-white font-bold py-2.5 rounded-xl shadow-md transition transform hover:scale-[1.02] active:scale-95 text-sm">
+                    <i class="fas fa-home mr-2"></i>玩其他分類
                 </button>
             </div>
         </div>
     </div>
 
     <!-- 底部版權 -->
-    <div class="mt-6 text-white/60 text-xs text-center">
+    <div class="mt-4 text-white/60 text-[10px] text-center"> <!-- mt-6 -> mt-4, text-xs -> text-[10px] -->
         © 2026 早安樂活 | 祝您元宵節快樂
     </div>
 
@@ -251,6 +263,7 @@
         ];
 
         let currentRiddleList = [];
+        let availableRiddles = [];
         let currentRiddle = null;
 
         function selectCategory(category) {
@@ -260,10 +273,21 @@
                 currentRiddleList = allRiddles.filter(r => r.cat === category);
             }
             
+            // Initialize available riddles for this session
+            availableRiddles = [...currentRiddleList];
+            
             // Switch screens
             document.getElementById('categoryScreen').classList.add('hidden');
             document.getElementById('gameScreen').classList.remove('hidden');
-            document.getElementById('gameScreen').classList.add('flex'); // Ensure flex is added back
+            document.getElementById('gameScreen').classList.add('flex');
+            
+            // Reset UI states
+            document.getElementById('riddleQuestion').classList.remove('hidden');
+            document.getElementById('answerArea').classList.add('hidden');
+            document.getElementById('congratsArea').classList.add('hidden');
+            document.getElementById('showBtn').classList.remove('hidden');
+            document.getElementById('nextBtn').classList.remove('hidden');
+            document.getElementById('homeBtn').classList.add('hidden');
             
             nextRiddle();
         }
@@ -275,9 +299,16 @@
         }
 
         function nextRiddle() {
-            // 隨機選題
-            const randomIndex = Math.floor(Math.random() * currentRiddleList.length);
-            currentRiddle = currentRiddleList[randomIndex];
+            // Check if there are any riddles left
+            if (availableRiddles.length === 0) {
+                showCongratulations();
+                return;
+            }
+
+            // 隨機選題並移除已選題目
+            const randomIndex = Math.floor(Math.random() * availableRiddles.length);
+            currentRiddle = availableRiddles[randomIndex];
+            availableRiddles.splice(randomIndex, 1);
 
             // 更新畫面
             document.getElementById('riddleCategory').innerText = currentRiddle.cat;
@@ -289,6 +320,17 @@
             const showBtn = document.getElementById('showBtn');
             showBtn.classList.remove('hidden');
             showBtn.innerHTML = '<i class="fas fa-lightbulb mr-2"></i>點我看解答';
+        }
+
+        function showCongratulations() {
+            document.getElementById('riddleQuestion').classList.add('hidden');
+            document.getElementById('answerArea').classList.add('hidden');
+            document.getElementById('showBtn').classList.add('hidden');
+            document.getElementById('nextBtn').classList.add('hidden');
+            
+            document.getElementById('congratsArea').classList.remove('hidden');
+            document.getElementById('homeBtn').classList.remove('hidden');
+            document.getElementById('riddleCategory').innerText = "恭喜完成";
         }
 
         function toggleAnswer() {
